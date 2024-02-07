@@ -1,2 +1,7 @@
-public class AvComMed {
+import java.time.LocalDate;
+
+public class AvComMed extends Jet {
+    public AvComMed(String CA, LocalDate FE, String LM, int HTP, int HTE, int NP, float CV, float PV) {
+        super(CA, FE, LM, HTP, HTE, NP, CV, PV);
+    }
 }
