@@ -1,7 +1,12 @@
 import java.time.LocalDate;
 
-public class AvComMed extends Jet {
+public class AvComMed extends Aeronave implements Propulsor {
     public AvComMed(String CA, LocalDate FE, String LM, int HTP, int HTE, int NP, float CV, float PV) {
         super(CA, FE, LM, HTP, HTE, NP, CV, PV);
+    }
+
+    @Override
+    public void propul() {
+        System.out.println("Esta aeronave utiliza queroxeno.");
     }
 }
