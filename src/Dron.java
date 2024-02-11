@@ -13,6 +13,6 @@ public class Dron extends Aeronave implements Propulsor {
 
     @Override
     public void propul() {
-        System.out.println("Esta aeronave utiliza electricidad.");
+        System.out.println("\t \t Esta aeronave utiliza electricidad.");
     }
 }

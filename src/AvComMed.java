@@ -7,6 +7,6 @@ public class AvComMed extends Aeronave implements Propulsor {
 
     @Override
     public void propul() {
-        System.out.println("Esta aeronave utiliza queroxeno.");
+        System.out.println("\t \t aeronave utiliza queroxeno.");
     }
 }

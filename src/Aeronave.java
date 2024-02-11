@@ -41,7 +41,7 @@ public class Aeronave {
         NumberFormat Format = NumberFormat.getCurrencyInstance(Euro);
         Format.setMaximumFractionDigits(0);
         String cambio = Format.format(diferencia);
-        System.out.println("Esto supuso " + HorasTrabajoEmpleadas + " horas de trabajo generando un beneficio de " + cambio);
+        System.out.println("\t Esto supuso " + HorasTrabajoEmpleadas + " horas de trabajo generando un beneficio de " + cambio);
     }
 
     public void totalHoras(Aeronave[] aeronaves) {
@@ -108,7 +108,7 @@ public class Aeronave {
 
         Arrays.sort(aeronaves, Comparator.comparing(Aeronave -> Aeronave.FechaEntrega));
 
-        System.out.println("\t \t \t \t \t PROGRAMA AERONAVES");
+        System.out.println("\t \t \t \t \t \t PROGRAMA AERONAVES");
 
         for (Aeronave aeronave : aeronaves) {
             aeronave.fechaEntrega();

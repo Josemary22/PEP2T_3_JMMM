@@ -7,6 +7,6 @@ public class Avioneta extends Aeronave implements Propulsor{
 
     @Override
     public void propul() {
-        System.out.println("Esta aeronave utiliza diesel.");
+        System.out.println("\t \t Esta aeronave utiliza diesel.");
     }
 }
