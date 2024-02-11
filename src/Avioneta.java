@@ -1,7 +1,4 @@
-import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 public class Avioneta extends Aeronave implements Propulsor{
     public Avioneta(String CA, LocalDate FE, String LM, int HTP, int HTE, int NP, float CV, float PV) {
