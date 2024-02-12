@@ -11,6 +11,6 @@ public class AvComMed extends Aeronave implements Propulsor {
     // Implementación del método propul() definido en la interfaz propulsor
     @Override
     public void propul() {
-        System.out.println("\t \t aeronave utiliza queroxeno.");
+        System.out.println("\t \t Esta aeronave utiliza queroxeno.");
     }
 }

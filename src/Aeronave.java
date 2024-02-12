@@ -36,7 +36,7 @@ public class Aeronave {
     // Metodo para formatear la fecha de entrega
     public String FormaDate() {
         DateTimeFormatter Formateo = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Después construyó un " + getClass().getSimpleName() +  " el " + Formateo.format(FechaEntrega) + " para " + NumeroPasajeros + " pasajeros";
+        return "Después construyó un " + getClass().getSimpleName() +  " el " + Formateo.format(FechaEntrega) + " para " + NumeroPasajeros + " pasajeros.";
     }
 
     // Metodo para calcular las horas de beneficio de la aeronave

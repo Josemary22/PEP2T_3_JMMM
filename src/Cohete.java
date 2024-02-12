@@ -12,7 +12,7 @@ public class Cohete extends Aeronave implements Propulsor {
     // Método para formatear la fecha de entrega, específico para cohete
     public String FormaDate() {
         DateTimeFormatter Formateo = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Despues contruyó un " + getClass().getSimpleName() + " el " + Formateo.format(FechaEntrega);
+        return "Despues contruyó un " + getClass().getSimpleName() + " el " + Formateo.format(FechaEntrega) + ".";
     }
 
     // Implementación del método propul() definido en la interfaz propulsor

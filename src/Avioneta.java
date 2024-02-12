@@ -12,7 +12,7 @@ public class Avioneta extends Aeronave implements Propulsor {
     // Método para formatear la fecha de entrega, específico para avioneta
     public String FormaDate() {
         DateTimeFormatter Formateo = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Después construyó una " + getClass().getSimpleName() +  " el " + Formateo.format(FechaEntrega) + " para " + NumeroPasajeros + " pasajeros";
+        return "Después construyó una " + getClass().getSimpleName() +  " el " + Formateo.format(FechaEntrega) + " para " + NumeroPasajeros + " pasajeros.";
     }
 
     // Metodo para calcular el total de horas de todas las avionetas
