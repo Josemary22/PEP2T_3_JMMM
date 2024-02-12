@@ -6,7 +6,7 @@ public class Cohete extends Aeronave implements Propulsor {
         super(CA, FE, LM, HTP, HTE, NP, CV, PV);
     }
 
-    public String formaDate() {
+    public String FormaDate() {
         DateTimeFormatter Formateo = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return "Despues contruyó un " + getClass().getSimpleName() + " el " + Formateo.format(FechaEntrega);
     }
