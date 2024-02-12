@@ -117,7 +117,7 @@ public class Aeronave {
         // Ordenamos esa tabla según fecha de entrega
         Arrays.sort(aeronaves, Comparator.comparing(Aeronave -> Aeronave.FechaEntrega));
 
-        System.out.println("\t \t \t \t \t \t PROGRAMA AERONAVES");
+        System.out.println("\t \t \t PROGRAMA AERONAVES");
 
         // Llamando a todas las aeronaves para imprimir por pantalla
         for (Aeronave aeronave : aeronaves) {
