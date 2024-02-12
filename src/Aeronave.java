@@ -6,15 +6,17 @@ import java.util.Comparator;
 import java.util.Locale;
 
 public class Aeronave {
-    String CodigoAparato;
-    LocalDate FechaEntrega;
-    String LineaMontaje;
-    int HorasTrabajoPrevistas;
-    int HorasTrabajoEmpleadas;
-    int NumeroPasajeros;
-    float CosteVenta;
-    float PrecioVenta;
+    // Atributos que vamos a utilizar
+    protected String CodigoAparato;
+    protected LocalDate FechaEntrega;
+    protected String LineaMontaje;
+    protected int HorasTrabajoPrevistas;
+    protected int HorasTrabajoEmpleadas;
+    protected int NumeroPasajeros;
+    protected float CosteVenta;
+    protected float PrecioVenta;
 
+    // Metodo constructor
     public Aeronave (String CA, LocalDate FE, String LM, int HTP, int HTE, int NP, float CV, float PV) {
         CodigoAparato = CA;
         FechaEntrega = FE;
@@ -26,17 +28,20 @@ public class Aeronave {
         PrecioVenta = PV;
     }
 
+    // Metodo para mostrar la fecha de entrega
     public void FechaEntrega() {
         System.out.println(FormaDate());
     }
 
+    // Metodo para formatear la fecha de entrega
     public String FormaDate() {
         DateTimeFormatter Formateo = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Después construyó una " + getClass().getSimpleName() +  " el " + Formateo.format(FechaEntrega) + " para " + NumeroPasajeros + " pasajeros";
+        return "Después construyó un " + getClass().getSimpleName() +  " el " + Formateo.format(FechaEntrega) + " para " + NumeroPasajeros + " pasajeros";
     }
 
+    // Metodo para calcular las horas de beneficio de la aeronave
     public void HorasBeneficio() {
-        float diferencia = CosteVenta - PrecioVenta;
+        float diferencia = PrecioVenta - CosteVenta;
         Locale Euro = new Locale("es", "ES");
         NumberFormat Format = NumberFormat.getCurrencyInstance(Euro);
         Format.setMaximumFractionDigits(0);
@@ -44,6 +49,12 @@ public class Aeronave {
         System.out.println("\t Esto supuso " + HorasTrabajoEmpleadas + " horas de trabajo generando un beneficio de " + cambio);
     }
 
+    // Metodo propulsor
+    public void propul() {
+
+    }
+
+    // Metodo para calcular el total de horas de todas las avionetas
     public void TotalHoras(Aeronave[] aeronaves) {
         int totalHorasAvionetas = 0;
         for (Aeronave aeronave : aeronaves) {
@@ -51,13 +62,14 @@ public class Aeronave {
                 totalHorasAvionetas += aeronave.HorasTrabajoEmpleadas;
             }
         }
-        System.out.println("El total de horas de trabajo empleadas en el tipo Avioneta fueron: " + totalHorasAvionetas);
     }
 
+    // Metodo para calcular el beneficio total de todas las aeronaves
     public double CalcularBeneficio() {
         return PrecioVenta;
     }
 
+    // Metodo para calcular la facturación total
     public void Facturacion(Aeronave[] aeronaves) {
         double totalCoste = 0.0;
         for (Aeronave aeronave : aeronaves) {
@@ -65,58 +77,57 @@ public class Aeronave {
         }
         Locale Euro = new Locale("es", "ES");
         NumberFormat Format = NumberFormat.getCurrencyInstance(Euro);
-        Format.setMaximumFractionDigits(0);
         String cambioFacturacion = Format.format(totalCoste);
         System.out.println("La facturación total de la compañia a día de hoy: " + cambioFacturacion);
     }
 
+    // Metodo main
     public static void main(String[] args) {
-        LocalDate FechaAe = LocalDate.of(2024, 2, 11);
-        Aeronave aero = new Aeronave("DR1", FechaAe, "L2GA",205, 205, 0, 0, 0);
+        // Formato de fecha
+        DateTimeFormatter Formato = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        Aeronave aero = new Aeronave("DR1", LocalDate.parse("02-11-2024", Formato), "L2GA",205, 205, 0, 0, 0);
 
-        LocalDate FechaDr = LocalDate.of(2008, 2, 2);
-        Dron dron = new Dron("DR1", FechaDr, "L2GA",205, 205, 0, 5400, 2700);
-        LocalDate FechaDr2 = LocalDate.of(2008, 4, 9);
-        Dron dron2 = new Dron("DR2", FechaDr2, "L2GA",205, 205, 0, 5900, 3200);
+        // Creamos las instancias de dron
+        Dron dron = new Dron("DR1", LocalDate.parse("02-02-2008", Formato), "L2GA",205, 205, 0, 2700, 5400);
+        Dron dron2 = new Dron("DR2", LocalDate.parse("03-09-2008", Formato), "L2GA",250, 250, 0, 2400, 5600);
 
-        LocalDate FechaAv = LocalDate.of(2008, 3, 10);
-        Avioneta avioneta = new Avioneta("AV1", FechaAv, "L2GA",2500, 2500, 8, 250000, 125000);
-        LocalDate FechaAv2 = LocalDate.of(2008, 4, 15);
-        Avioneta avioneta2 = new Avioneta("AV2", FechaAv2, "L2GA",2500, 2500, 10, 250000, 125000);
+        // Creamos las instancias de avioneta
+        Avioneta avioneta = new Avioneta("AV1", LocalDate.parse("03-10-2008", Formato), "L2GA",2500, 2500, 8, 125000, 250000);
+        Avioneta avioneta2 = new Avioneta("AV2", LocalDate.parse("04-15-2008", Formato), "L2GA",2700, 2800, 10, 130000, 260000);
 
-        LocalDate FechaJet = LocalDate.of(2008, 5, 22);
-        Jet jet = new Jet("JE1", FechaJet, "L2GA",10550, 10550, 6, 1500000, 750000);
-        LocalDate FechaJet2 = LocalDate.of(2008, 7, 27);
-        Jet jet2 = new Jet("JE2", FechaJet2, "L2GA",10550, 10550, 8, 1500000, 750000);
+        // Creamos las instancias de jet
+        Jet jet = new Jet("JE1", LocalDate.parse("05-22-2008", Formato), "L2GA",10550, 10550, 6, 750000, 1500000);
+        Jet jet2 = new Jet("JE2", LocalDate.parse("06-25-2008", Formato), "L2GA",11000, 11000, 8, 970000, 1600000);
 
-        LocalDate FechaAcm = LocalDate.of(2008, 10, 28);
-        AvComMed avcommed = new AvComMed("AVM1", FechaAcm, "L2GA",22785, 22785, 120, 5000000, 2500000);
-        LocalDate FechaAcm2 = LocalDate.of(2008, 11, 6);
-        AvComMed avcommed2 = new AvComMed("AVM2", FechaAcm2, "L2GA",22785, 22785, 140, 5000000, 2500000);
+        // Creamos las instancias de avcommed
+        AvComMed avcommed = new AvComMed("AVM1", LocalDate.parse("07-28-2008", Formato), "L2GA",22785, 22785, 120, 2500000, 5000000);
+        AvComMed avcommed2 = new AvComMed("AVM2", LocalDate.parse("11-06-2008", Formato), "L2GA",24000, 24000, 140, 5500000, 7000000);
 
-        LocalDate FechaAcg = LocalDate.of(2009, 7, 28);
-        AvComGran avcomgran = new AvComGran("AVG1", FechaAcg, "L2GA",30000, 30000, 200, 10000000, 5000000);
-        LocalDate FechaAcg2 = LocalDate.of(2009, 7, 28);
-        AvComGran avcomgran2 = new AvComGran("AVG2", FechaAcg2, "L2GA",30000, 30000, 220, 10000000, 5000000);
+        // Creamos las instancias de avcomgran
+        AvComGran avcomgran = new AvComGran("AVG1", LocalDate.parse("07-28-2009", Formato), "L2GA",30000, 30000, 200, 5000000, 10000000);
+        AvComGran avcomgran2 = new AvComGran("AVG2", LocalDate.parse("08-22-2009", Formato), "L2GA",35000, 35000, 220, 10000000, 20000000);
 
-        LocalDate FechaCo = LocalDate.of(2022, 9, 14);
-        Cohete cohete = new Cohete("CH1", FechaCo, "L2GA",22785, 22785, 0, 5000000, 2500000);
-        LocalDate FechaCo2 = LocalDate.of(2022, 12, 30);
-        Cohete cohete2 = new Cohete("CH2", FechaCo2, "L2GA",22785, 22785, 0, 5000000, 2500000);
+        // Creamos las instancias de cohete
+        Cohete cohete = new Cohete("CH1", LocalDate.parse("09-14-2022", Formato), "L2GA",22785, 22785, 0,2500000, 5000000 );
+        Cohete cohete2 = new Cohete("CH2", LocalDate.parse("12-30-2022", Formato), "L2GA",24000, 24000, 0, 5500000, 7000000);
 
+        // Creación de la tabla con las instancias creadas
         Aeronave[] aeronaves = {avcomgran, avcomgran2, avcommed, avcommed2, avioneta, avioneta2, cohete, cohete2, dron, dron2, jet, jet2};
 
+        // Ordenamos esa tabla según fecha de entrega
         Arrays.sort(aeronaves, Comparator.comparing(Aeronave -> Aeronave.FechaEntrega));
 
         System.out.println("\t \t \t \t \t \t PROGRAMA AERONAVES");
 
+        // Llamando a todas las aeronaves para imprimir por pantalla
         for (Aeronave aeronave : aeronaves) {
             aeronave.FechaEntrega();
             aeronave.HorasBeneficio();
-            ((Propulsor) aeronave).propul();
+            aeronave.propul();
             System.out.println();
         }
-        aero.TotalHoras(aeronaves);
+        // Llamando del total de horas de avioneta y la facturación de la compañia para imprimir por pantalla
+        avioneta.TotalHoras(aeronaves);
         aero.Facturacion(aeronaves);
     }
 }
